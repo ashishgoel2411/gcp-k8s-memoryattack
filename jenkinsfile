@@ -7,7 +7,7 @@ pipeline {
             steps {
                 script {
                    sh 'kubectl cp induce_memory.sh tomcat-deployment-7dc5f485fd-gjnv2:/tmp/ -n tomcat-ns'
-                   sh 'kubectl exec -it tomcat-deployment-7dc5f485fd-gjnv2 -n tomcat-ns -- bash /tmp/induce_memory.sh'				   
+                   sh 'kubectl exec -i tomcat-deployment-7dc5f485fd-gjnv2 -n tomcat-ns -- bash /tmp/induce_memory.sh'				   
                 }
             }
         }
