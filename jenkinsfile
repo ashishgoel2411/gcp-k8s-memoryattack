@@ -6,12 +6,10 @@ pipeline {
             agent any
             steps {
                 script {
-                   sh 'kubectl cp induce_memory.sh tomcat-deployment-7dc5f485fd-gjnv2:/tmp/ -n tomcat-ns'
-                   sh 'kubectl exec -i tomcat-deployment-7dc5f485fd-gjnv2 -n tomcat-ns -- bash /tmp/induce_memory.sh'				   
+                   sh 'kubectl cp induce_memory.sh tomcat-deployment-6fc96dd55f-5ndj5:/tmp/ -n tomcat-ns'
+                   sh 'kubectl exec -i tomcat-deployment-6fc96dd55f-5ndj5 -n tomcat-ns -- bash /tmp/induce_memory.sh'				   
                 }
             }
         }
     }
 }
-
-tail /dev/null
