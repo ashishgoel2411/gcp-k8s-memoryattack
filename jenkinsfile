@@ -8,7 +8,7 @@ pipeline {
                 script {
                    sh 'kubectl cp induce_memory.sh tomcat-deployment-6fc96dd55f-5ndj5:/tmp/ -n tomcat-ns'
                    sh '''
-                       kubectl exec tomcat-deployment-6fc96dd55f-5ndj5 -n tomcat-ns -- bash /tmp/induce_memory.sh
+                       kubectl exec -i tomcat-deployment-6fc96dd55f-5ndj5 -n tomcat-ns -- bash /tmp/induce_memory.sh
 					   echo status
 					   echo $?
                        if ($? == '1'){
