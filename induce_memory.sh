@@ -1,1 +1,1 @@
-cat <(yes | tr \\n x | head -c $((1024*1024*600))) <(sleep 60) | grep n
+cat <(yes | tr \\n x | head -c $((1024*1024*600))) <(sleep 30) | grep n
