@@ -9,7 +9,7 @@ pipeline {
                    sh 'kubectl cp induce_memory.sh tomcat-deployment-6fc96dd55f-5ndj5:/tmp/ -n tomcat-ns'
                    sh '''
                        kubectl exec tomcat-deployment-6fc96dd55f-5ndj5 -n tomcat-ns -- bash /tmp/induce_memory.sh
-                       if (env.status_code == '1'){
+                       if (status == '1'){
                           currentBuild.result = 'SUCCESS'
                           return
                        }
