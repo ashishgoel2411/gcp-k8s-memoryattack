@@ -6,16 +6,10 @@ pipeline {
             agent any
             steps {
                 script {
-                   sh 'kubectl cp induce_memory.sh tomcat-deployment-6fc96dd55f-5ndj5:/tmp/ -n tomcat-ns'
-                   sh '''
-                       kubectl exec -i tomcat-deployment-6fc96dd55f-5ndj5 -n tomcat-ns -- bash /tmp/induce_memory.sh
-					   echo status
-					   echo $?
-                       if ($? == '1'){
-                          currentBuild.result = 'SUCCESS'
-                          return
-                       }
-	               '''
+                   sh 'chmod +x induce_memory.sh'
+                   sh 'kubectl cp induce_memory.sh tomcat-deployment-78d96f6c65-ffxr9:/tmp/ -n tomcat-ns'
+                   sh 'kubectl exec -i tomcat-deployment-78d96f6c65-ffxr9 -n tomcat-ns -- bash -c "/tmp/induce_memory.sh &"'
+	
                 }
             }
         }
