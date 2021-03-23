@@ -9,7 +9,7 @@ pipeline {
                    sh 'chmod +x induce_memory.sh'
                    sh 'kubectl cp induce_memory.sh tomcat-deployment-78d96f6c65-ffxr9:/tmp/ -n tomcat-ns'
                    sh 'kubectl exec -i tomcat-deployment-78d96f6c65-ffxr9 -n tomcat-ns -- bash -c "/tmp/induce_memory.sh &"'
-	
+                   sh 'sleep 5'	
                 }
             }
         }
